@@ -3,15 +3,16 @@
 |Money|||
 | :--- | :-- | :-- |
 |category|int|类别, 0 为餐饮类，1为旅游类，2为出行类，3为医疗类，4为花费类，5为生活用品类，6为其他|
-|payment|int|0为现金,1为支付宝,2为信用卡|
-|cost|int|金额|
+|cost|float|金额|
 |time|date|记入时间|
 |type|int|0为收入，1为支出|
 
 |Budget|||
 | :--- | :-- | :-- |
-|cost|int|消费预算（默认每月1000）|
-|current|int|现有金额|
+|init|float|原本有多少钱|
+|budget|float|消费预算（默认每月1000）|
+|current|float|现有金额(收入-消费)|
+|left|float|距离预算还能花多少钱|
 
 ## Method
 

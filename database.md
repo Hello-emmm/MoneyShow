@@ -12,7 +12,8 @@
 |init|float|原本有多少钱|
 |budget|float|消费预算（默认每月1000）|
 |current|float|现有金额(收入-消费)|
-|left|float|距离预算还能花多少钱|
+|budgetleft|float|距离预算还能花多少钱（budget + current）|
+|actualleft|float|实际余额（init + current）|
 
 ## Method
 
@@ -66,12 +67,34 @@
 ### 返回首页信息[冗余] SelectMainInfo() 
 |name|return|说明|
 | :--- | :-- |:-- |
-|SelectMainInfo()|float[]|[0] latest 收入 <br> [1] latest 支出 <br> [2] 本周 收入 <br> [3] 本周 支出 <br> [4] 本月 收入 <br> [5] 本月 支出 <br> [6] 今日 收入 <br> [7] 今日 支出 <br> [8] 余额(未写) <br>|
+|SelectMainInfo()|float[]|[0] latest 收入 <br> [1] latest 支出 <br> [2] 本周 收入 <br> [3] 本周 支出 <br> [4] 本月 收入 <br> [5] 本月 支出 <br> [6] 今日 收入 <br> [7] 今日 支出 <br> 查询当前余额请调用InitAndCurrent()|
 
 ### 各月份按种类的收入/支出 SelectType(int month, int category)
 |name|return|说明|
 | :--- | :-- |:-- |
 |SelectType(int month, int category)|float[]|数组中[0] 为收入，[1] 为支出<br>SelectType(0, 1) // 月份参数为0时返回本月, category 为1时为旅游类<br>SelectType(param:1-12,param:0-6) 前台控制传入参数合理<br>|
+
+### 剁一笔 InsertIntoTableMoney(Money money)
+|name|return|说明|
+| :--- | :-- |:-- |
+|InsertIntoTableMoney(Money money)|bool|bool为true时操作成功|
+
+### 查询Budget表 QueryBudget()
+|name|return|说明|
+| :--- | :-- |:-- |
+|QueryBudget()|float[]|数组中[0] 为用户设置的预算值（budget）<br> 数组中[1] 为用户原来有多少钱<br> 数组中[2] 为用户现在(收入-消费)的值<br> 数组中[3] 为用户现在距离预算还可以花多少钱<br> 数组中[4] 为用户现在实际余额|
+
+### 查询用户现在距离预算还可以花多少钱[冗余] BudgetAndCurrent() 
+|name|return|
+| :--- | :-- |
+|BudgetAndCurrent()|float|
+
+
+### 查询用户现在实际余额[冗余] InitAndCurrent()
+|name|return|
+| :--- | :-- |
+|InitAndCurrent()|float|
+
 
 
 
